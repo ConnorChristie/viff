@@ -3,7 +3,8 @@ python:
   - "2.7"
 before_install:
   - git clone https://github.com/aleaxit/gmpy.git
-  - python gmpy/setup.py install
+  - cd gmpy
+  - python setup.py install
 install:
   - pip install .
   - pip install -r requirements.txt

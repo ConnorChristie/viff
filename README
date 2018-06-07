@@ -1,6 +1,4 @@
-
-VIFF: Virtual Ideal Functionality Framework
-===========================================
+# VIFF: Virtual Ideal Functionality Framework
 
 VIFF is a general framework for doing secure multi-party computations.
 In a secure multi-party computation several parties jointly compute an
@@ -10,14 +8,7 @@ revealing any information on the individual votes. In a protocol with
 n players, the confidentiality of the inputs is ensured when up to n/2
 of the players are corrupted.
 
-VIFF is Free Software licensed under the GNU Lesser General Public
-License (LGPL) version 3 or later. Please see the files COPYING and
-COPYING.LIB for details. Please see doc/install.txt or
-doc/html/install.html for installation instructions.
-
-
-Features
---------
+## Features
 
 VIFF is still under development, but it is nevertheless quite usable
 and offers the following features:
@@ -41,23 +32,8 @@ and offers the following features:
 All operations are automatically scheduled to run in parallel meaning
 that an operation starts as soon as the operands are ready.
 
-Should you encounter have problems with VIFF, then please start by
-downloading the latest version on http://viff.dk/. If that does not
-help, then ask for help on the VIFF mailing list at
 
-  viff-devel@viff.dk
-
-You can subscribe to the list at
-
-  http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk
-
-Please submit your bug reports to the VIFF Issue Tracker:
-
-  http://tracker.viff.dk/
-
-
-Example Applications
---------------------
+## Example Applications
 
 The apps directory contains a number of example applications. They
 require player configuration files to be generated in advance, use

@@ -2,9 +2,11 @@ language: python
 python:
   - "2.7"
 before_install:
+  - apt-get install python2-dev libmpc-dev
   - git clone https://github.com/aleaxit/gmpy.git
   - cd gmpy
-  - python setup.py install
+  - python setup.py build_ext
+  - sudo python setup.py install
 install:
   - pip install .
   - pip install -r requirements.txt

@@ -19,10 +19,11 @@ import operator
 
 from twisted.internet.defer import gatherResults
 
-from viff.test.util import RuntimeTestCase, protocol, BinaryOperatorTestCase
 from viff.runtime import Share
-from viff.active import BasicActiveRuntime, ActiveRuntime, \
+from viff.runtimes.active import BasicActiveRuntime, ActiveRuntime, \
     BrachaBroadcastMixin, TriplesHyperinvertibleMatricesMixin
+from viff.test.util import RuntimeTestCase, protocol, BinaryOperatorTestCase
+
 
 class MulTest(BinaryOperatorTestCase, RuntimeTestCase):
     operator = operator.mul

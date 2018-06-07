@@ -16,12 +16,13 @@
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
 #: Declare doctests for Trial.
-__doctests__ = ['viff.matrix']
+__doctests__ = ['viff.utils.matrix']
 
-from viff.field import GF
-from viff.matrix import Matrix, hyper
-from viff.prss import generate_subsets
 from twisted.trial.unittest import TestCase
+
+from viff.math.field import GF
+from viff.shares.prss import generate_subsets
+from viff.utils.matrix import Matrix, hyper
 
 
 class MatrixTest(TestCase):

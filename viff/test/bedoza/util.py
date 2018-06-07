@@ -16,21 +16,17 @@
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
 
-from viff.config import generate_configs
-
-from viff.test.util import RuntimeTestCase
-
-from viff.bedoza.bedoza import BeDOZaRuntime
-from viff.bedoza.util import _convolute
 from viff.bedoza.add_macs import add_macs
+from viff.bedoza.bedoza import BeDOZaRuntime
 from viff.bedoza.shares import PartialShare, PartialShareContents
-
-
+from viff.bedoza.util import _convolute
+from viff.config import generate_configs
+from viff.test.util import RuntimeTestCase
 # HACK: The paillier keys that are available as standard in VIFF tests
 # are not suited for use with pypaillier. Hence, we use NaClPaillier
 # to generate test keys. This confusion will disappear when pypaillier
 # replaces the current Python-based paillier implementation.
-from viff.paillierutil import NaClPaillier
+from viff.utils.paillier_util import NaClPaillier
 
 # HACK^2: Currently, the NaClPaillier hack only works when triple is
 # imported. It should ideally work without the triple package.

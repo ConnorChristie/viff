@@ -19,8 +19,8 @@
 
 import operator
 
-from viff.comparison import Toft05Runtime, Toft07Runtime
-from viff.comparison import ActiveToft05Runtime, ActiveToft07Runtime
+from viff.mixins.comparison import ActiveToft05Runtime, ActiveToft07Runtime
+from viff.mixins.comparison import Toft05Runtime, Toft07Runtime
 from viff.test.util import RuntimeTestCase, BinaryOperatorTestCase
 
 

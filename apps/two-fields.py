@@ -20,10 +20,11 @@
 import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import create_runtime
 from viff.config import load_config
 

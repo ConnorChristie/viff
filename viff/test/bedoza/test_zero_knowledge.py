@@ -16,18 +16,16 @@
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
 
+from gmpy import mpz
 # We don't need secure random numbers for test purposes.
 from random import Random
 
-from gmpy import mpz
-
-from viff.field import GF
 from viff.bedoza.modified_paillier import ModifiedPaillier
-from viff.bedoza.zero_knowledge import ZKProof
 from viff.bedoza.util import rand_int_signed
-
-from viff.test.util import protocol
+from viff.bedoza.zero_knowledge import ZKProof
+from viff.math.field import GF
 from viff.test.bedoza.util import BeDOZaTestCase, skip_if_missing_packages
+from viff.test.util import protocol
 
 
 class PlayerStub(object):

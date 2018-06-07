@@ -21,34 +21,10 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-if not hasattr(sys, 'version_info') or sys.version_info < (2, 4, 0, 'final'):
-    raise SystemExit, "VIFF requires Python version 2.4 or later."
-
-from distutils.command.sdist import sdist
-from distutils.core import setup
+# from distutils.core import setup
+from setuptools import setup, find_packages
 
 import viff
-
-class hg_sdist(sdist):
-    def get_file_list(self):
-        try:
-            from distutils.errors import DistutilsModuleError
-            import subprocess
-            p = subprocess.Popen(['hg', 'manifest'], stdout=subprocess.PIPE)
-            exitcode = p.wait()
-            if exitcode != 0:
-                raise DistutilsModuleError("Mercurial exited with non-zero "
-                                           "exit code: %d" % exitcode)
-            files = p.stdout.read().strip().split('\n')
-
-            # Add the files *before* the normal manifest magic is
-            # done. That allows the manifest template to exclude some
-            # files tracked by hg and to include others.
-            self.filelist.extend(files)
-            sdist.get_file_list(self)
-        except OSError, e:
-            raise DistutilsModuleError("could not execute Mercurial: %s" % e)
 
 setup(name='viff',
       version=viff.__version__,
@@ -83,7 +59,7 @@ that an operation starts as soon as the operands are ready.
         'Shamir', 'pseudo-random secret sharing', 'PRSS', 'Bracha broadcast'
         ],
       license=viff.__license__,
-      packages=['viff', 'viff.test', 'viff.libs'],
+      packages=find_packages(),
       package_data={'viff': ['../twisted/plugins/viff_reactor.py']},
       platforms=['any'],
       classifiers=[
@@ -101,7 +77,7 @@ that an operation starts as soon as the operands are ready.
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules'
         ],
-      cmdclass={'sdist': hg_sdist}
+      requires=['twisted', 'gmpy']
       )
 
 # When releasing VIFF, notify these sites:

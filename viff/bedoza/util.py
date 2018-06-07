@@ -15,11 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-from twisted.internet.defer import Deferred, gatherResults
-
 from gmpy import mpz
 
-from viff.constants import TEXT
+from twisted.internet.defer import Deferred, gatherResults
+
+from viff.utils.constants import TEXT
+
 
 def _send(runtime, vals, serialize=str, deserialize=int):
     """Send vals[i] to player i + 1. Returns deferred list.

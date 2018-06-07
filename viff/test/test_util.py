@@ -19,15 +19,15 @@
 
 import os
 
-from viff.util import deep_wait
-from viff.field import GF, GF256
-from viff import shamir, prss
-
-from twisted.trial.unittest import TestCase
 from twisted.internet.defer import Deferred
+from twisted.trial.unittest import TestCase
+
+from viff.math.field import GF, GF256
+from viff.shares import prss, shamir
+from viff.utils.util import deep_wait
 
 #: Declare doctests for Trial.
-__doctests__ = ['viff.util']
+__doctests__ = ['viff.utils.util']
 
 
 class FakeTest(TestCase):

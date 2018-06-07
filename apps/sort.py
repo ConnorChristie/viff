@@ -51,17 +51,19 @@
 
 from math import log, floor
 from optparse import OptionParser
+
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
 from progressbar import ProgressBar, Percentage, Bar, ETA, ProgressBarWidget
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import Runtime, create_runtime, gather_shares
-from viff.comparison import Toft07Runtime
+from viff.mixins.comparison import Toft07Runtime
 from viff.config import load_config
-from viff.util import find_prime, rand, dprint
+from viff.utils.util import find_prime, rand, dprint
 
 # Parse command line arguments.
 parser = OptionParser()

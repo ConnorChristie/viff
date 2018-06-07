@@ -17,15 +17,11 @@
 
 """Tests for viff.aes."""
 
-
-from viff.test.util import RuntimeTestCase, protocol
-
-from viff.field import GF256
+from viff.math.field import GF256
 from viff.runtime import gather_shares, Share
-from viff.aes import bit_decompose, AES
-
 from viff.test.rijndael import S, rijndael
-
+from viff.test.util import RuntimeTestCase, protocol
+from viff.utils.aes import bit_decompose, AES
 
 __doctest__ = ["viff.aes"]
 

@@ -20,21 +20,21 @@
 # This example shows how to use multi-party AES encryption.
 
 
+import sys
 import time
 from optparse import OptionParser
 from pprint import pformat
-import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF256
+from viff.math.field import GF256
 from viff.runtime import Runtime, create_runtime, gather_shares
 from viff.config import load_config
 
-from viff.aes import AES
-
+from viff.utils.aes import AES
 
 parser = OptionParser(usage="Usage: %prog [options] config_file")
 parser.add_option("-K", "--keylength", action="store", type="int",
@@ -43,24 +43,24 @@ parser.set_defaults(keylength=128)
 parser.add_option("-e", "--exponentiation", action="store", type="int",
                   metavar="variant",
                   help="Use exponentiation to invert bytes. "
-                  "Default is the shortest sequential chain. "
-                  "Possibilities:                             " +
-                  "\n".join(["%d: %s                           " %
-                             (i, s) for (i, s)
-                             in enumerate(AES.exponentiation_variants)]))
+                       "Default is the shortest sequential chain. "
+                       "Possibilities:                             " +
+                       "\n".join(["%d: %s                           " %
+                                  (i, s) for (i, s)
+                                  in enumerate(AES.exponentiation_variants)]))
 parser.add_option("-m", "--masking", action="store_false",
                   dest="exponentiation",
                   help="Use masking to invert bytes.")
 parser.set_defaults(exponentiation=1)
-parser.add_option("-o", "--at-once", action="store_true",help="Prepare "
-                  "the whole computation at once instead of round-wise.")
+parser.add_option("-o", "--at-once", action="store_true", help="Prepare "
+                                                               "the whole computation at once instead of round-wise.")
 parser.add_option("-c", "--count", action="store", type="int",
                   help="Number of blocks to encrypt. Defaults to 1.")
 parser.set_defaults(count=1)
 parser.add_option("-a", "--active", action="store_true", help="Use actively "
-                  "secure runtime. Default is only passive security.")
+                                                              "secure runtime. Default is only passive security.")
 parser.add_option("-p", "--preproc", action="store_true", help="Use "
-                  "preprocessing. Default is no preprocessing.")
+                                                               "preprocessing. Default is no preprocessing.")
 
 # Add standard VIFF options.
 Runtime.add_options(parser)
@@ -71,6 +71,7 @@ if len(args) == 0:
     parser.error("You must specify a config file.")
 
 id, players = load_config(args[0])
+
 
 def encrypt(_, rt, key):
     start = time.time()
@@ -107,8 +108,9 @@ def encrypt(_, rt, key):
     g = gather_shares(opened_ciphertext)
     rt.schedule_complex_callback(g, fin)
 
+
 def share_key(rt):
-    key =  []
+    key = []
 
     for i in range(options.keylength / 8):
         inputter = i % 3 + 1
@@ -119,6 +121,7 @@ def share_key(rt):
 
     s = rt.synchronize()
     rt.schedule_complex_callback(s, encrypt, rt, key)
+
 
 def preprocess(rt):
     start = time.time()
@@ -164,25 +167,30 @@ def preprocess(rt):
 
     if program_desc:
         preproc = rt.preprocess(program_desc)
+
         def fin(_):
             print "Finished preprocessing after %f sec." % (time.time() - start)
             return rt
+
         preproc.addCallback(fin)
         rt.schedule_complex_callback(preproc, share_key)
     else:
         share_key(rt)
 
+
 if options.active:
-    from viff.active import ActiveRuntime
+    from viff.runtimes.active import ActiveRuntime
+
     runtime_class = ActiveRuntime
 else:
-    from viff.passive import PassiveRuntime
+    from viff.runtimes.passive import PassiveRuntime
+
     runtime_class = PassiveRuntime
 
 try:
     threshold = len(players) - len(players[id].keys.keys()[0])
 except IndexError:
-    print >>sys.stderr, "PRSS keys in config file missing."
+    print >> sys.stderr, "PRSS keys in config file missing."
     sys.exit(1)
 
 rt = create_runtime(id, players, threshold, options, runtime_class)

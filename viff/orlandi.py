@@ -27,17 +27,14 @@ import operator
 
 from twisted.internet.defer import Deferred, gatherResults, succeed
 
-from viff.runtime import Share, gather_shares, preprocess
-from viff.util import rand
-from viff.constants import TEXT, PAILLIER
-from viff.field import FieldElement
-from viff.paillier import encrypt_r, decrypt
-
-from viff.simplearithmetic import SimpleArithmeticRuntime
-
-from viff.triple import Triple
-
-from hash_broadcast import HashBroadcastMixin
+from viff.math.arithmetic import SimpleArithmeticRuntime
+from viff.math.field import FieldElement
+from viff.math.triple import Triple
+from viff.mixins.hash_broadcast import HashBroadcastMixin
+from viff.runtime import Share, gather_shares
+from viff.runtimes.paillier import encrypt_r, decrypt
+from viff.utils.constants import TEXT, PAILLIER
+from viff.utils.util import rand
 
 try:
     from pypaillier import encrypt_r, decrypt, tripple_2c, tripple_3a

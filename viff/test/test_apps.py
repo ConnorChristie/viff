@@ -17,17 +17,18 @@
 
 """Test of apps/millionaires.py example."""
 
-import re
 import os
 import os.path as path
+import re
 
-from twisted.trial.unittest import TestCase
 from twisted.internet import reactor
-from twisted.internet.utils import getProcessOutput
 from twisted.internet.defer import Deferred, gatherResults
+from twisted.internet.utils import getProcessOutput
+from twisted.trial.unittest import TestCase
 
-from viff.field import GF256
-from viff.util import rand
+from viff.math.field import GF256
+from viff.utils.util import rand
+
 
 def execute(executable, *args):
     """Execute *executable* when the reactor is started."""

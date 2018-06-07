@@ -20,14 +20,15 @@
 import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 from twisted.internet.defer import gatherResults
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import create_runtime
 from viff.config import load_config
-from viff.util import dprint
+from viff.utils.util import dprint
 
 id, players = load_config(sys.argv[1])
 print "I am player %d" % id

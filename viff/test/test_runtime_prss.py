@@ -17,9 +17,9 @@
 
 """Tests for the prss based protocols in the viff.runtime."""
 
+from viff.math.field import GF256
 from viff.runtime import Share, gather_shares
 from viff.test.util import RuntimeTestCase, protocol
-from viff.field import GF256
 
 
 class RuntimePrssTest(RuntimeTestCase):

@@ -19,15 +19,13 @@
 # We don't need secure random numbers for test purposes.
 from random import Random
 
-from viff.field import GF
-from viff.runtime import gather_shares
-
 from viff.bedoza.bedoza_triple import ModifiedPaillier
 from viff.bedoza.util import _convolute, _convolute_gf_elm
-
-from viff.test.util import protocol
+from viff.math.field import GF
+from viff.runtime import gather_shares
 from viff.test.bedoza.util import BeDOZaTestCase, skip_if_missing_packages
 from viff.test.bedoza.util import TestShareGenerator, TestPartialShareGenerator
+from viff.test.util import protocol
 
 
 class TestPartialShareGeneratorTest(BeDOZaTestCase):

@@ -18,7 +18,7 @@
 from twisted.trial.unittest import TestCase
 
 # Import VIFF packages.
-from viff.field import GF
+from viff.math.field import GF
 
 p = 30916444023318367583
 Zp = GF(p)

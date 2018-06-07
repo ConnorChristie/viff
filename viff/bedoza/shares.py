@@ -17,8 +17,6 @@
 
 from viff.runtime import Share
 
-from viff.bedoza.keylist import BeDOZaKeyList
-from viff.bedoza.maclist import BeDOZaMACList
 
 class PartialShareContents(object):
     """A BeDOZa share without macs, e.g. < a >.

@@ -19,8 +19,8 @@
 
 import operator
 
+from viff.mixins.comparison import Toft07Runtime
 from viff.runtime import Share
-from viff.comparison import Toft07Runtime
 from viff.test.util import RuntimeTestCase, protocol
 
 

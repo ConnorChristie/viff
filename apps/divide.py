@@ -32,15 +32,17 @@ more players are necessary for the security.
 """
 
 from optparse import OptionParser
+
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import Runtime, create_runtime, make_runtime_class
-from viff.comparison import ComparisonToft07Mixin
+from viff.mixins.comparison import ComparisonToft07Mixin
 from viff.config import load_config
-from viff.util import find_prime, dprint
+from viff.utils.util import find_prime, dprint
 
 
 def bits_to_val(bits):

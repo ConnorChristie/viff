@@ -15,16 +15,13 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-import struct
-
 from twisted.internet.defer import gatherResults
-from viff.runtime import Share
 
-from viff.bedoza.util import _send, fast_pow
 from viff.bedoza.keylist import BeDOZaKeyList
 from viff.bedoza.maclist import BeDOZaMACList
-
-from viff.bedoza.shares import BeDOZaShare, BeDOZaShareContents
+from viff.bedoza.shares import BeDOZaShareContents
+from viff.bedoza.util import _send, fast_pow
+from viff.runtime import Share
 
 
 def add_macs(runtime, field, u_bound, alpha, random, paillier, partial_shares):

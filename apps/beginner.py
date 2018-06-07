@@ -38,13 +38,14 @@
 import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import create_runtime
 from viff.config import load_config
-from viff.util import dprint, find_prime
+from viff.utils.util import dprint, find_prime
 
 # Load the configuration from the player configuration files.
 id, players = load_config(sys.argv[1])

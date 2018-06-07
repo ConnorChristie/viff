@@ -27,14 +27,15 @@
 import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import create_runtime
-from viff.paillier import PaillierRuntime
+from viff.runtimes.paillier import PaillierRuntime
 from viff.config import load_config
-from viff.util import dprint, find_prime
+from viff.utils.util import dprint, find_prime
 
 id, players = load_config(sys.argv[1])
 Zp = GF(find_prime(2**64))

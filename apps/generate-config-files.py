@@ -52,10 +52,11 @@
 # (highest numbered first).
 
 from __future__ import division
+
 from optparse import OptionParser
 
 from viff.config import generate_configs
-from viff.paillierutil import ViffPaillier, NaClPaillier
+from viff.utils.paillier_util import ViffPaillier, NaClPaillier
 
 try:
     import pypaillier

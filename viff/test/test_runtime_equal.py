@@ -20,12 +20,12 @@
 
 import operator
 
-from viff.equality import ProbabilisticEqualityMixin
+from viff.mixins.equality import ProbabilisticEqualityMixin
+from viff.runtimes.passive import PassiveRuntime
 from viff.test.util import RuntimeTestCase, BinaryOperatorTestCase
-from viff.passive import PassiveRuntime
 
 #: Declare doctests for Trial.
-__doctests__ = ['viff.equality']
+__doctests__ = ['viff.mixins.equality']
 
 
 class EqualRuntime(PassiveRuntime, ProbabilisticEqualityMixin):

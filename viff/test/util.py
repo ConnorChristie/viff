@@ -17,19 +17,20 @@
 
 """Utility functions and classes used for testing."""
 
+from random import Random
+
+from twisted.internet import reactor
 from twisted.internet.defer import Deferred, gatherResults, maybeDeferred
 from twisted.trial.unittest import TestCase
-from twisted.internet import reactor
 
-from viff.passive import PassiveRuntime
-from viff.runtime import Share, ShareExchanger, ShareExchangerFactory, SelfShareExchanger, SelfShareExchangerFactory, FakeTransport
-from viff.field import GF
 from viff.config import generate_configs, load_config
-from viff.util import rand
-from viff.test.loopback import loopbackAsync
+from viff.math.field import GF
 from viff.reactor import ViffReactor
-
-from random import Random
+from viff.runtime import Share, ShareExchanger, ShareExchangerFactory, SelfShareExchanger, SelfShareExchangerFactory, \
+    FakeTransport
+from viff.runtimes.passive import PassiveRuntime
+from viff.test.loopback import loopbackAsync
+from viff.utils.util import rand
 
 
 def protocol(method):

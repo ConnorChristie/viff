@@ -35,18 +35,20 @@
 # be removed when the shares are distributed correctly as per the
 # previous TODO item.
 
-import time, random
+import random
+import time
 from optparse import OptionParser
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff import shamir
-from viff.field import GF
+from viff.shares import shamir
+from viff.math.field import GF
 from viff.runtime import Runtime, create_runtime
 from viff.config import load_config
-from viff.util import find_prime
+from viff.utils.util import find_prime
 
 def output(x, format="output: %s"):
     print format % x
@@ -104,8 +106,8 @@ S = [random.randint(1, 2**l) for _ in range(options.count)]
 B.sort(reverse=True)
 S.sort()
 
-seller_bids = [shamir.share(Zp(x), t, n)[id-1][1] for x in S]
-buyer_bids  = [shamir.share(Zp(x), t, n)[id-1][1] for x in B]
+seller_bids = [shamir.share(Zp(x), t, n)[id - 1][1] for x in S]
+buyer_bids = [shamir.share(Zp(x), t, n)[id - 1][1] for x in B]
 
 
 def auction(rt):

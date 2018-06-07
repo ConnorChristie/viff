@@ -19,10 +19,10 @@ import sys
 
 from twisted.internet.defer import gatherResults, DeferredList
 
-from viff.test.util import RuntimeTestCase, protocol
-from viff.runtime import gather_shares, Share
-from viff.paillierutil import NaClPaillier
 from viff.config import generate_configs
+from viff.runtime import gather_shares
+from viff.test.util import RuntimeTestCase, protocol
+from viff.utils.paillier_util import NaClPaillier
 
 pypaillier = None
 try:
@@ -41,9 +41,9 @@ except ImportError:
     OrlandiRuntime = None
     OrlandiShare = None
 
-from viff.field import FieldElement, GF
+from viff.math.field import FieldElement, GF
 
-from viff.util import rand
+from viff.utils.util import rand
 
 sys.setrecursionlimit(10000)
 

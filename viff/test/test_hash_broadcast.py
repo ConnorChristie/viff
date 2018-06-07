@@ -17,11 +17,11 @@
 
 from twisted.internet.defer import Deferred, DeferredList
 
+from viff.math.field import GF
+from viff.mixins.comparison import Toft05Runtime
+from viff.mixins.hash_broadcast import HashBroadcastMixin
 from viff.test.util import RuntimeTestCase, protocol
-from viff.field import GF
 
-from viff.comparison import Toft05Runtime
-from viff.hash_broadcast import HashBroadcastMixin
 
 class BroadcastRuntime(Toft05Runtime, HashBroadcastMixin):
     """Mix of :class:`Toft05Runtime` and

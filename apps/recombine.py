@@ -19,8 +19,8 @@
 
 import sys
 
-from viff import shamir
-from viff.field import GF, GF256
+from viff.math.field import GF, GF256
+from viff.shares import shamir
 
 if sys.argv[1].find(":") == -1:
     F = GF(int(sys.argv.pop(1)))

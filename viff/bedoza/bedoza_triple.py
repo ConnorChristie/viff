@@ -19,30 +19,21 @@
     TODO: Explain more.
 """
 
-import itertools
 import hashlib
-
-from twisted.internet.defer import Deferred, gatherResults, succeed
-
-from viff.runtime import Runtime, ShareList, gather_shares
-from viff.field import FieldElement, GF
-from viff.constants import TEXT
-from viff.util import rand
-from viff.bedoza.shares import BeDOZaShare, BeDOZaShareContents, PartialShare
-from viff.bedoza.shares import PartialShareContents
-from viff.bedoza.share_generators import PartialShareGenerator
-from viff.bedoza.keylist import BeDOZaKeyList
-from viff.bedoza.maclist import BeDOZaMACList
-from viff.bedoza.add_macs import add_macs
-from viff.bedoza.modified_paillier import ModifiedPaillier
-from viff.bedoza.util import fast_pow
-from viff.bedoza.util import _convolute
-from viff.bedoza.share import generate_partial_share_contents
-
-from viff.triple import Triple
-
 # TODO: Use secure random instead!
 from random import Random
+
+from twisted.internet.defer import Deferred, gatherResults
+
+from viff.bedoza.add_macs import add_macs
+from viff.bedoza.modified_paillier import ModifiedPaillier
+from viff.bedoza.share import generate_partial_share_contents
+from viff.bedoza.share_generators import PartialShareGenerator
+from viff.bedoza.shares import PartialShare
+from viff.bedoza.util import fast_pow
+from viff.math.field import GF
+from viff.math.triple import Triple
+from viff.utils.util import rand
 
 try:
     import pypaillier

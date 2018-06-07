@@ -17,13 +17,12 @@
 
 import sys
 import time
-
 from pprint import pformat
 
 from twisted.internet.defer import gatherResults
 
 from viff.runtime import gather_shares
-from viff.util import rand
+from viff.utils.util import rand
 
 start = 0
 

@@ -19,8 +19,9 @@ from gmpy import mpz
 
 from twisted.internet.defer import gatherResults
 
-from viff.bedoza.zero_knowledge import ZKProof
 from viff.bedoza.shares import PartialShareContents
+from viff.bedoza.zero_knowledge import ZKProof
+
 
 def generate_partial_share_contents(field_elements, runtime, paillier, k, random):
     """Protocol for generating partial shares.

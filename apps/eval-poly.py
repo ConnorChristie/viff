@@ -23,18 +23,19 @@
 # Computation" presented at the PLAS '07 conference. The program
 # evaluates a polynomial securely and reveals the sign of the result.
 
+from optparse import OptionParser
 from time import time
 
-from optparse import OptionParser
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import Runtime, create_runtime
-from viff.comparison import Toft07Runtime
+from viff.mixins.comparison import Toft07Runtime
 from viff.config import load_config
-from viff.util import find_prime
+from viff.utils.util import find_prime
 
 # We start by defining the protocol.
 def eval_poly(runtime):

@@ -16,4 +16,4 @@
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
 #: Declare doctests for Trial.
-__doctests__ = ['viff.shamir']
+__doctests__ = ['viff.shares.shamir']

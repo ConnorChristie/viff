@@ -17,22 +17,15 @@
 
 """Full threshold actively secure runtime."""
 
-from twisted.internet.defer import Deferred, gatherResults, succeed
-
-from viff.util import rand
-from viff.runtime import Share, ShareList, gather_shares
-from viff.field import FieldElement
-from viff.constants import TEXT
-from viff.simplearithmetic import SimpleArithmeticRuntime
-
-from viff.hash_broadcast import HashBroadcastMixin
-
-from viff.bedoza.shares import BeDOZaShare
-
-from viff.bedoza.keylist import BeDOZaKeyList
-from viff.bedoza.maclist import BeDOZaMACList
+from twisted.internet.defer import Deferred, gatherResults
 
 from viff.bedoza.share_generators import ShareGenerator
+from viff.bedoza.shares import BeDOZaShare
+from viff.math.arithmetic import SimpleArithmeticRuntime
+from viff.math.field import FieldElement
+from viff.mixins.hash_broadcast import HashBroadcastMixin
+from viff.runtime import Share, gather_shares
+from viff.utils.constants import TEXT
 
 
 class BeDOZaException(Exception):

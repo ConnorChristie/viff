@@ -30,10 +30,11 @@ function to generate a player config and save it in a number of
 """
 
 from viff.libs.configobj import ConfigObj
-from viff.prss import generate_subsets, PRF
-from viff.util import rand
-from viff.paillierutil import ViffPaillier
-from viff import paillierutil
+from viff.shares.prf import PRF
+from viff.shares.prss import generate_subsets
+from viff.utils import paillier_util
+from viff.utils.paillier_util import ViffPaillier
+from viff.utils.util import rand
 
 
 class Player:
@@ -134,7 +135,7 @@ def load_config(source):
         if 'paillier' in config[player]:
             paillier_type = config[player]['paillier']['type']
             pub_key = config[player]['paillier']['pubkey']
-            pubkey = paillierutil.deserializ_pubkey(paillier_type, pub_key)
+            pubkey = paillier_util.deserializ_pubkey(paillier_type, pub_key)
         else:
             # old format
             pubkey = tuple(map(long, config[player]['pubkey']))
@@ -142,7 +143,7 @@ def load_config(source):
         if 'prss_keys' in config[player]:
             if 'paillier' in config[player]:
                 sec_key = config[player]['paillier']['seckey']
-                seckey = paillierutil.deserializ_seckey(sec_key)
+                seckey = paillier_util.deserializ_seckey(sec_key)
             else:
                 # old format
                 seckey = tuple(map(long, config[player]['seckey']))

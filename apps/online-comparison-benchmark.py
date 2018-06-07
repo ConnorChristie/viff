@@ -17,11 +17,12 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-import time
 import signal
+import time
 from optparse import OptionParser
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 from twisted.internet.defer import DeferredList, gatherResults
@@ -29,11 +30,11 @@ from twisted.internet.defer import DeferredList, gatherResults
 #from twisted.internet import defer
 #defer.setDebugging(True)
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import Runtime, create_runtime
-from viff.comparison import Toft07Runtime
+from viff.mixins.comparison import Toft07Runtime
 from viff.config import load_config
-from viff.util import rand, find_prime
+from viff.utils.util import rand, find_prime
 
 
 last_timestamp = time.time()

@@ -31,25 +31,25 @@ scheduling things correctly behind the scenes.
 """
 from __future__ import division
 
-import time
-import struct
-from optparse import OptionParser, OptionGroup
-from collections import deque
 import os
+import struct
 import sys
-
-from viff.field import GF256, FieldElement
-from viff.util import wrapper, rand, track_memory_usage, begin, end
-from viff.constants import SHARE
-import viff.reactor
+import time
+from collections import deque
+from optparse import OptionParser, OptionGroup
 
 from twisted.internet import reactor
-from twisted.internet.task import LoopingCall
-from twisted.internet.error import ConnectionDone, CannotListenError
 from twisted.internet.defer import Deferred, DeferredList, gatherResults
 from twisted.internet.defer import maybeDeferred
+from twisted.internet.error import ConnectionDone, CannotListenError
 from twisted.internet.protocol import ReconnectingClientFactory, ServerFactory
+from twisted.internet.task import LoopingCall
 from twisted.protocols.basic import Int16StringReceiver
+
+import viff.reactor
+from viff.math.field import GF256, FieldElement
+from viff.utils.constants import SHARE
+from viff.utils.util import wrapper, rand, track_memory_usage, begin, end
 
 
 class Share(Deferred):
@@ -187,7 +187,7 @@ class ShareList(Share):
     *c* are ready:
 
     >>> from pprint import pprint
-    >>> from viff.field import GF256
+    >>> from viff.math.field import GF256
     >>> a = Share(None, GF256)
     >>> b = Share(None, GF256)
     >>> c = Share(None, GF256)
@@ -249,7 +249,7 @@ def gather_shares(shares):
     namely the values from the initial shares:
 
     >>> from pprint import pprint
-    >>> from viff.field import GF256
+    >>> from viff.math.field import GF256
     >>> a = Share(None, GF256)
     >>> b = Share(None, GF256)
     >>> shares = gather_shares([a, b])
@@ -963,7 +963,7 @@ def make_runtime_class(runtime_class=None, mixins=None):
     if runtime_class is None:
         # The import is put here because of circular depencencies
         # between viff.runtime and viff.passive.
-        from viff.passive import PassiveRuntime
+        from viff.runtimes.passive import PassiveRuntime
         runtime_class = PassiveRuntime
     if mixins is None:
         return runtime_class
@@ -1017,7 +1017,7 @@ def create_runtime(id, players, threshold, options=None, runtime_class=None):
     if runtime_class is None:
         # The import is put here because of circular depencencies
         # between viff.runtime and viff.passive.
-        from viff.passive import PassiveRuntime
+        from viff.runtimes.passive import PassiveRuntime
         runtime_class = PassiveRuntime
 
     if options and options.host:

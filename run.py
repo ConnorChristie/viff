@@ -24,14 +24,17 @@ GNU/Linux and similar systems, we have created this little program to
 run the commands used when building releases of VIFF.
 """
 
-import sys, os, shutil
-from os.path import isdir, join, getsize
-from subprocess import Popen
-from pprint import pprint
-from textwrap import wrap
+import os
+import shutil
+import sys
 from base64 import b64decode
+from os.path import isdir, join, getsize
+from pprint import pprint
+from subprocess import Popen
+from textwrap import wrap
 
 from twisted.python.procutils import which
+
 
 def abort(msg, *args, **kwargs):
     if args:
@@ -224,7 +227,7 @@ def trial(python):
         else:
             abort("Twisted Trial needs SYSTEMROOT env variable.")
 
-    execute([python, trial, '--reporter=bwverbose', 'viff.test'],
+    execute([python, trial, 'viff.test'],
             env=trial_env)
 
 

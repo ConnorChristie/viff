@@ -18,11 +18,13 @@
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
 from optparse import OptionParser
+
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF
+from viff.math.field import GF
 from viff.runtime import create_runtime, Runtime
 from viff.config import load_config
 

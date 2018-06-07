@@ -59,19 +59,20 @@ from math import log
 from optparse import OptionParser
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF, FakeGF
+from viff.math.field import GF, FakeGF
 from viff.runtime import Runtime, create_runtime, make_runtime_class
-from viff.passive import PassiveRuntime
-from viff.active import (BasicActiveRuntime,
-                         TriplesHyperinvertibleMatricesMixin, TriplesPRSSMixin)
-from viff.comparison import ComparisonToft05Mixin, ComparisonToft07Mixin
-from viff.equality import ProbabilisticEqualityMixin
-from viff.paillier import PaillierRuntime
+from viff.runtimes.passive import PassiveRuntime
+from viff.runtimes.active import (BasicActiveRuntime,
+                                  TriplesHyperinvertibleMatricesMixin, TriplesPRSSMixin)
+from viff.mixins.comparison import ComparisonToft05Mixin, ComparisonToft07Mixin
+from viff.mixins.equality import ProbabilisticEqualityMixin
+from viff.runtimes.paillier import PaillierRuntime
 from viff.config import load_config
-from viff.util import find_prime
+from viff.utils.util import find_prime
 
 commitment = None
 pypaillier = None

@@ -54,15 +54,15 @@ Testing support for protocols -- loopback between client and server.
 
 # system imports
 import tempfile
-from zope.interface import implements
 
+from twisted.internet import interfaces, protocol, main, defer, reactor
+from twisted.internet.interfaces import IAddress
 # Twisted Imports
 from twisted.protocols import policies
-from twisted.internet import interfaces, protocol, main, defer, reactor
 from twisted.python import failure
-from twisted.internet.interfaces import IAddress
+from zope.interface import implements
 
-from viff.util import rand
+from viff.utils.util import rand
 
 
 class _LoopbackQueue(object):

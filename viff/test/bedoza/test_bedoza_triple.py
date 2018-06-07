@@ -15,39 +15,27 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 from exceptions import AssertionError
-
-import operator
-
 # We don't need secure random numbers for test purposes.
 from random import Random
 
-from twisted.internet.defer import gatherResults, Deferred, DeferredList
+from twisted.internet.defer import gatherResults, Deferred
 
-from viff.test.util import protocol
-from viff.constants import TEXT
-from viff.runtime import gather_shares, Share
-from viff.config import generate_configs
-from viff.field import FieldElement, GF
-from viff.config import generate_configs
-
-from viff.bedoza.bedoza import BeDOZaShare
-from viff.bedoza.keylist import BeDOZaKeyList
-from viff.bedoza.bedoza_triple import TripleGenerator, ModifiedPaillier
-from viff.bedoza.shares import PartialShare, PartialShareContents
-from viff.bedoza.util import _send, _convolute, _convolute_gf_elm
 from viff.bedoza.add_macs import add_macs
-from viff.bedoza.share_generators import ShareGenerator, PartialShareGenerator
+from viff.bedoza.bedoza_triple import TripleGenerator, ModifiedPaillier
 from viff.bedoza.share import generate_partial_share_contents
-
+from viff.bedoza.share_generators import ShareGenerator, PartialShareGenerator
+from viff.bedoza.util import _send, _convolute, _convolute_gf_elm
+from viff.math.field import GF
+from viff.runtime import gather_shares
 from viff.test.bedoza.util import BeDOZaTestCase, skip_if_missing_packages
 from viff.test.bedoza.util import TestShareGenerator
+from viff.test.util import protocol
+from viff.utils.constants import TEXT
 
 
 # Ok to use non-secure random generator in tests.
 #from viff.util import rand
-import random
 
 
 class DataTransferTest(BeDOZaTestCase):

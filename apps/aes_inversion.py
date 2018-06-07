@@ -25,14 +25,15 @@ import time
 from optparse import OptionParser
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF256
+from viff.math.field import GF256
 from viff.runtime import Runtime, create_runtime, gather_shares, Share
 from viff.config import load_config
 
-from viff.aes import AES
+from viff.utils.aes import AES
 
 
 parser = OptionParser(usage="Usage: %prog [options] config_file")

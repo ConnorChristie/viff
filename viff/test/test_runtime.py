@@ -23,18 +23,17 @@ value) additional multiplication and comparison stress testing is
 performed by L{StressTest}.
 """
 
+import operator
 import os
 from random import Random
-import operator
 
 from twisted.internet.defer import gatherResults, Deferred, DeferredList
 
-from viff.field import GF256
+from viff.math.field import GF256
+from viff.mixins.comparison import Toft05Runtime
 from viff.runtime import Share
-from viff.constants import SHARE
-from viff.comparison import Toft05Runtime
 from viff.test.util import RuntimeTestCase, BinaryOperatorTestCase, protocol
-
+from viff.utils.constants import SHARE
 
 __doctests__ = ['viff.runtime']
 

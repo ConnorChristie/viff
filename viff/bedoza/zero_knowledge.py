@@ -15,12 +15,11 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
+import hashlib
 from gmpy import mpz, digits
 
-import hashlib
-
-from viff.runtime import gatherResults
 from viff.bedoza.util import rand_int_signed
+
 
 class ZKProof(object):
     """Zero-knowledge protocol used as part of the Share protocol.

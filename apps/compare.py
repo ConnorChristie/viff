@@ -17,19 +17,20 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 import random
+import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 from twisted.internet.defer import gatherResults
 
-from viff.field import GF, GF256
+from viff.math.field import GF, GF256
 from viff.runtime import create_runtime
-from viff.comparison import Toft05Runtime
+from viff.mixins.comparison import Toft05Runtime
 from viff.config import load_config
-from viff.util import dprint
+from viff.utils.util import dprint
 
 Zp = GF(30916444023318367583)
 

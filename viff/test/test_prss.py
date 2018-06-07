@@ -17,12 +17,12 @@
 
 """Tests for viff.prss."""
 
-from viff.prss import generate_subsets
-
 from twisted.trial.unittest import TestCase
 
+from viff.shares.prss import generate_subsets
+
 #: Declare doctests for Trial.
-__doctests__ = ['viff.prss']
+__doctests__ = ['viff.shares.prss']
 
 
 class PRSSTest(TestCase):

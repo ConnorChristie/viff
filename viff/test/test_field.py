@@ -17,13 +17,14 @@
 
 """Tests for viff.field."""
 
-from viff.field import GF, GF256
-
-from twisted.trial.unittest import TestCase
 import operator
 
+from twisted.trial.unittest import TestCase
+
+from viff.math.field import GF, GF256
+
 #: Declare doctests for Trial.
-__doctests__ = ['viff.field']
+__doctests__ = ['viff.math.field']
 
 
 class GFpElementTest(TestCase):

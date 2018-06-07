@@ -15,10 +15,10 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-from viff.bedoza.shares import BeDOZaShare, BeDOZaShareContents, PartialShare
-from viff.bedoza.shares import PartialShareContents
-from viff.bedoza.util import _convolute
 from viff.bedoza.add_macs import add_macs
+from viff.bedoza.shares import PartialShare
+from viff.bedoza.util import _convolute
+
 
 class PartialShareGenerator(object):
 

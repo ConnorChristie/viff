@@ -15,29 +15,21 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with VIFF. If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-
 # We don't need secure random numbers for test purposes.
 from random import Random
 
-from twisted.internet.defer import gatherResults, DeferredList
+from twisted.internet.defer import gatherResults
 
-from viff.test.util import RuntimeTestCase, protocol
-from viff.test.bedoza.util import TestShareGenerator
-
-from viff.runtime import gather_shares, Share
-from viff.config import generate_configs
-from viff.bedoza.bedoza import BeDOZaRuntime
-from viff.bedoza.shares import BeDOZaShare, BeDOZaShareContents
+from viff.bedoza.bedoza_triple import TripleGenerator
 from viff.bedoza.keylist import BeDOZaKeyList
 from viff.bedoza.maclist import BeDOZaMACList
-from viff.field import FieldElement, GF
-from viff.util import rand
 from viff.bedoza.modified_paillier import ModifiedPaillier
-from viff.bedoza.bedoza_triple import TripleGenerator
-from viff.bedoza.zero_knowledge import ZKProof
-
+from viff.bedoza.shares import BeDOZaShareContents
+from viff.math.field import GF
+from viff.runtime import gather_shares
 from viff.test.bedoza.util import BeDOZaTestCase, skip_if_missing_packages
+from viff.test.bedoza.util import TestShareGenerator
+from viff.test.util import RuntimeTestCase, protocol
 
 
 class BeDOZaBasicCommandsTest(BeDOZaTestCase):

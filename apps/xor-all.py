@@ -20,13 +20,14 @@
 import sys
 
 import viff.reactor
+
 viff.reactor.install()
 from twisted.internet import reactor
 
-from viff.field import GF256
-from viff.runtime import create_runtime
+from viff.math.field import GF256
+from viff.runtimes.runtime import create_runtime
 from viff.config import load_config
-from viff.util import dprint
+from viff.utils.util import dprint
 
 id, players = load_config(sys.argv[1])
 input = int(sys.argv[2])
